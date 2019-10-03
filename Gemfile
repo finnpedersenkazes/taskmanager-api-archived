@@ -23,7 +23,8 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+# Read more: https://github.com/cyu/rack-cors
+gem 'rack-cors'
 
 # Finn is adding gems here:
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
