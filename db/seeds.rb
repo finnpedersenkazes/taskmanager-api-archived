@@ -1,7 +1,7 @@
 Task.destroy_all
 
-puts 'Creating 20 fake tasks ...'
-20.times do
+puts 'Creating 1000 fake tasks ...'
+1000.times do
   planned_date = Faker::Date.between(from: Date.today, to: 2.days.from_now)
   task = Task.new(
     title: Faker::FunnyName.name,
