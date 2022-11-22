@@ -1,24 +1,48 @@
-# README
+# Task Manager API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To see what the data looks like, simply connect to https://taskmanager01-api.herokuapp.com/tasks/
 
-Things you may want to cover:
+## API Documentation
 
-* Ruby version
+### Postman Collection
 
-* System dependencies
+Find the postman collection `collection.json` file in the [**documentation/postman/**](documentation/postman/) folder.
 
-* Configuration
+Import the collection file into Postman and test the API.
 
-* Database creation
+For more information see https://www.postman.com/
 
-* Database initialization
+### Swagger OpenAPI
 
-* How to run the test suite
+Find the OpenAPI definition `swagger.json` in the [**documentation/openapi/**](documentation/openapi/) folder. 
 
-* Services (job queues, cache servers, search engines, etc.)
+You can use the swagger file to autogenerate clients, servers and documentation. 
 
-* Deployment instructions
+For more information see https://openapi-generator.tech/
 
-* ...
+### Markdown
+
+Open the [**README**](documentation/markdown/README.md) in the [**documentation/markdown/**](documentation/markdown/) folder an.
+
+
+### HTML2
+
+Open the [**index.html**](documentation/html2/index.html) file with your favorite browser. 
+The file is in the [**documentation/html2/**](documentation/html2/) folder.  
+
+
+## Elm Frontend
+
+### Running Frontent
+
+Try the app here: 
+https://finnpedersenkazes.github.io/taskmanager-elm/
+
+### Elm App Code on GitHub
+
+Take a look at the frontend source code here: 
+
+https://github.com/finnpedersenkazes/taskmanager-elm
+
+
+

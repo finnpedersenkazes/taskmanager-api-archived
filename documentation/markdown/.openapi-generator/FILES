@@ -1,0 +1,5 @@
+.openapi-generator-ignore
+Apis/TaskApi.md
+Models/TaskModifyModel.md
+Models/TaskReadModel.md
+README.md

@@ -1,0 +1,285 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1.0.4",
+    "title" : "Task Manager",
+    "description" : "Task Manager API",
+    "contact" : {
+      "name" : "Finn Pedersen",
+      "email" : "finnpedersenfrance@gmail.com"
+    }
+  },
+  "paths" : {
+    "/tasks" : {
+      "get" : {
+        "tags" : [ "task" ],
+        "summary" : "Get all tasks",
+        "description" : "Get all tasks",
+        "operationId" : "getTasks",
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/TaskReadModel"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "task" ],
+        "summary" : "Create a task",
+        "description" : "Creates a task",
+        "operationId" : "createTask",
+        "responses" : {
+          "default" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TaskModifyModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          }
+        },
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TaskModifyModel"
+              }
+            }
+          },
+          "description" : "Created a Task",
+          "required" : true
+        }
+      }
+    },
+    "/tasks/{taskId}" : {
+      "get" : {
+        "tags" : [ "task" ],
+        "summary" : "Gets a task",
+        "description" : "Returns a single task",
+        "operationId" : "getTask",
+        "parameters" : [ {
+          "name" : "taskId",
+          "in" : "path",
+          "description" : "ID of task to return",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TaskReadModel"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Task not found"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "task" ],
+        "summary" : "Update a task",
+        "description" : "Updates a task",
+        "operationId" : "updateTask",
+        "parameters" : [ {
+          "name" : "taskId",
+          "in" : "path",
+          "description" : "ID of task to update",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TaskReadModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "404" : {
+            "description" : "Task not found"
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        },
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TaskModifyModel"
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "task" ],
+        "summary" : "Delete a task",
+        "description" : "Deletes a task",
+        "operationId" : "deleteTask",
+        "parameters" : [ {
+          "name" : "taskId",
+          "in" : "path",
+          "description" : "Task to delete",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          },
+          "204" : {
+            "description" : "successful operation"
+          },
+          "404" : {
+            "description" : "Task not found"
+          }
+        }
+      }
+    }
+  },
+  "servers" : [ {
+    "description" : "Ruby on Rails API backend on Heroku",
+    "url" : "https://taskmanager01-api.herokuapp.com/"
+  }, {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/FINNPEDERSENFRANCE/Task-Manager/1.0.3"
+  } ],
+  "components" : {
+    "schemas" : {
+      "TaskReadModel" : {
+        "title" : "a task with timestamp",
+        "description" : "A task to be done",
+        "type" : "object",
+        "required" : [ "id", "type" ],
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "urgency" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "duration_minutes" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "attention_date" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "deadline" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "planned_date" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "planned_starting_time" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "status" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "created_at" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "updated_at" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "TaskModifyModel" : {
+        "title" : "a task without timestamp",
+        "description" : "A task to be done",
+        "type" : "object",
+        "required" : [ "type" ],
+        "properties" : {
+          "title" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "urgency" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "duration_minutes" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "attention_date" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "deadline" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "planned_date" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "planned_starting_time" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "status" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      }
+    }
+  }
+}
